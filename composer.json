@@ -1,0 +1,31 @@
+{
+  "name": "joanfabregat/iso8601-to-seconds",
+  "version": "v1.0",
+  "description": "Converts ISO 8601 duration to seconds",
+  "homepage": "https://github.com/joanfabregat/iso8601-to-seconds",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "JoanFabregat\\Iso8601ToSeconds\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "JoanFabregat\\Iso8601ToSeconds\\Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Joan Fabrégat",
+      "email": "joanfabregat@gmail.com",
+      "homepage": "https://www.joanfabregat.com"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "^11"
+  }
+}
