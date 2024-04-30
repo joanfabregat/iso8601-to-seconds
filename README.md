@@ -1,28 +1,39 @@
-# Secure token generator
+# ISO 8601 to seconds
 
-Generate cryptographically secure alphanumeric tokens in PHP 8.2+ using
-PHP [`random_int()`](https://www.php.net/manual/en/function.random-int.php) function.
+[![Latest Stable Version](https://poser.pugx.org/joanfabregat/iso8601-to-seconds/v)](//packagist.org/packages/joanfabregat/iso8601-to-seconds)
+[![Total Downloads](https://poser.pugx.org/joanfabregat/iso8601-to-seconds/downloads)](//packagist.org/packages/joanfabregat/iso8601-to-seconds)
+[![Latest Unstable Version](https://poser.pugx.org/joanfabregat/iso8601-to-seconds/v/unstable)](//packagist.org/packages/joanfabregat/iso8601-to-seconds)
+[![License](https://poser.pugx.org/joanfabregat/iso8601-to-seconds/license)](//packagist.org/packages/joanfabregat/iso8601-to-seconds)
+
+A simple package to convert ISO 8601 duration to seconds
 
 ## Installation
 
-The package is [available on Packagist](https://packagist.org/packages/joanfabregat/secure-token-generator). The
+The package is [available on Packagist](https://packagist.org/packages/joanfabregat/iso8601-to-seconds). The
 recommended way to install the library is through [Composer](http://getcomposer.org):
 
 ```bash
-composer require joanfabregat/secure-token-generator
+composer require joanfabregat/iso8601-to-seconds
 ```
 
 ## Usage
 
 ```php
-use JoanFabregat\SecureTokenGenerator\SecureTokenGenerator;
+use JoanFabregat\Iso8601ToSeconds\Iso8601ToSeconds;
 
-$token = SecureTokenGenerator::generate(32);
-echo $token; // will echo a 32 characters long alphanumeric token
+$seconds = Iso8601ToSeconds::convert('PT1H');
+echo $token; // will echo 3600
 
-$token = SecureTokenGenerator::generate(16, allowSpecialChars: true);
-echo $token; // will echo a 16 characters long alphanumeric token with special characters
+$interval = new DateInterval('PT1H');
+$seconds = Iso8601ToSeconds::convert($interval);
+echo $token; // will echo 3600
 
+$interval = DateInterval::createFromDateString('1 hour');
+$seconds = Iso8601ToSeconds::convert($interval);
+echo $token; // will echo 3600
+
+// will throw an \InvalidArgumentException exception
+$token = Iso8601ToSeconds::convert('a random string');
 ```
 
 ## License
